@@ -10,19 +10,12 @@ exports.numbersAnswers = {
   },
 
   convertToBinary: function(num) {
-	return setLength(num.toString(2), 8);
-	function setLength(num, length) {
-      var result = "";
-		while(length--)
-			result += (num >> length) & 1;    
-		return result;
-    }
+	var str = num.toString(2);
+	return new Array(9 - str.length).join('0') + str;
   },
 
   multiply: function(a, b) {
-	var multiplier = 1000000;
-	a *= multiplier;
-    b *= multiplier;
-    return (a * b) / (multiplier * multiplier);
+	var res = a * b;
+	return Number(res.toPrecision(6));
   }
 };

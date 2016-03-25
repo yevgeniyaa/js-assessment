@@ -10,11 +10,8 @@ exports.objectsAnswers = {
 	},
 
 	iterate: function(obj) {
-		var result = [];
-		for (var key in obj) {
-			if (!obj.hasOwnProperty(key)) continue;
-			result.push(key + ": " + obj[key]);
-		}
-		return result;
+		return Object.keys(obj).map(function(curKey) {
+			return curKey + ": " + obj[curKey]
+		});
 	}
 };

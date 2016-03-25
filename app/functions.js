@@ -31,20 +31,20 @@ exports.functionsAnswers = {
   },
 
   useArguments: function() {
-    return [].reduce.call(arguments, function(a, b) {
+    return Array.prototype.reduce.call(arguments, function(a, b) {
       return a + b;
     })
   },
 
   callIt: function(fn) {
-    var args = [].slice.call(arguments, 1, arguments.length);
+    var args = Array.prototype.slice.call(arguments, 1, arguments.length);
     return fn.apply(null, args);
   },
 
   partialUsingArguments: function(fn) {
-    var args = [].slice.call(arguments, 1, arguments.length);
+    var args = Array.prototype.slice.call(arguments, 1, arguments.length);
     return function() {
-      totalArgs = args.concat([].slice.call(arguments));
+      totalArgs = args.concat(Array.prototype.slice.call(arguments));
       return fn.apply(null, totalArgs);
     };
   },

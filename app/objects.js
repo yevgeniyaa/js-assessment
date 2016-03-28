@@ -11,7 +11,7 @@ exports.objectsAnswers = {
 
 	iterate: function(obj) {
 		return Object.keys(obj).map(function(curKey) {
-			return curKey + ": " + obj[curKey]
+			return `${curKey}: ${obj[curKey]}`;
 		});
 	}
 };

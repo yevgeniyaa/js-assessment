@@ -5,7 +5,7 @@ exports.recursionAnswers = {
 		var result = [];
 
 		function recFunction(folder, dir) {
-			dir = dir === undefined ? folder.dir : dir;
+			dir = dir || folder.dir;
 			var content = folder.files;
 			var itHasToBeAdded = dir === folder.dir;
 
@@ -41,10 +41,31 @@ exports.recursionAnswers = {
 	},
 
 	fibonacci: function(n) {
-
+		return (function createFibonacciSeq(i, seq) {
+			if (!seq || !i) {
+				i = 0;
+				seq = [0, 1];
+			}
+			if (n < 2) return seq;
+			seq.push(seq[seq.length - 1] + seq[seq.length - 2]);
+			return i === n ? seq : createFibonacciSeq(++i, seq);
+		})()[n];
 	},
 
 	validParentheses: function(n) {
+		var result = [];
+		addBracket(0, 0, '');
+		function addBracket(opened, closed, brackets) {
+			if (opened === n && closed === n)
+				result.push(brackets);
+			else {
+				if (opened < n)
+					addBracket(opened + 1, closed, brackets + '(');
+				if (closed < opened)
+					addBracket(opened, closed + 1, brackets + ')');
+			}
+		}
+		return result;
 
 	}
 };
